@@ -1,6 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {searchFoods, getFoodData} from './script/httpFunctions';
+
+searchFoods('Cheddar cheese');
+getFoodData(574634);
 
 function App() {
   return (
