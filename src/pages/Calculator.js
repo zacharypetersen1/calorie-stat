@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import Search from '../components/Search';
+import SearchSection from '../components/SearchSection';
 
 export default class Calculator extends Component {
   render() {
     return (
       <div>
         <Header/>
-        <Search/>
+        <SearchSection/>
       </div>
     )
   }

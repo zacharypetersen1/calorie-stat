@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import { searchResults } from './searchResults';
+import { searchResults, searchQuery } from './searchReducers';
 
 const root = combineReducers({
-  searchResults
+  searchResults,
+  searchQuery
 });
 export default root;
