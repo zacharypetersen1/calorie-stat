@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 export default function SearchResults() {
 
-  const results = useSelector(state => state.searchResults);
+  const results = useSelector(state => state.search.results);
 
   return (
     <ul>
