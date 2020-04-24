@@ -2,7 +2,7 @@ const baseURL = "https://api.nal.usda.gov/fdc";
 const searchURL = "/v1/foods/search";
 const foodURL = "/v1/food/";
 
-// I know this isn't secure but I don't want to pay/host a middle-man server just to secure a key on this dinky web app
+// I know this isn't secure but I don't want to host a server just to secure this key
 const apiKey = "C6cV4ea5SYHatxL7N2ETU2awLx10MY3vbKOKE7wS";
 
 function apiKeyArg() {

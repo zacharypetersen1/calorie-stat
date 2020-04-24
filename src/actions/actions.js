@@ -1,11 +1,15 @@
 import * as types from "./types";
 
-export function setSearchResults(results, query) {
+export function cacheSearchResults(results, query) {
   return {
-    type: types.SET_SEARCH_RESULTS,
+    type: types.CACHE_SEARCH_RESULTS,
     payload: results,
     query: query,
   };
+}
+
+export function loadCachedResults(query) {
+  return { type: types.LOAD_CACHED_RESULTS, query: query };
 }
 
 export function setSearchQuery(query) {
