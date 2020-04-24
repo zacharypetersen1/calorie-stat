@@ -2,7 +2,7 @@ import React from 'react';
 import SearchResults from './SearchResults';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchQuery } from '../actions/actions';
-import { trySearch } from '../scripts/helpers';
+import { trySearch } from '../scripts/events';
 
 export default function SearchSection() {
   const dispatch = useDispatch();
