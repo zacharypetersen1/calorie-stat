@@ -1,10 +1,10 @@
-import * as types from './types';
+import * as types from "./types";
 
 export function setSearchResults(results, query) {
-  return { 
+  return {
     type: types.SET_SEARCH_RESULTS,
     payload: results,
-    query: query 
+    query: query,
   };
 }
 

@@ -34,7 +34,6 @@
     ]
   },
   "devDependencies": {
-    "exact": "^0.8.0",
-    "prettier": "^2.0.5"
+    "exact": "^0.8.0"
   }
 }
