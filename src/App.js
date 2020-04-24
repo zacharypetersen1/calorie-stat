@@ -1,9 +1,13 @@
 import React from 'react';
-import Calculator from './pages/Calculator';
+import Header from './components/Header';
+import SearchSection from './components/SearchSection';
 
 function App() {
   return (
-    <Calculator/>
+    <div>
+      <Header/>
+      <SearchSection/>
+    </div>
   );
 }
 
