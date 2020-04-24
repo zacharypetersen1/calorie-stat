@@ -7,7 +7,7 @@ function apiKeyArg() {
   return 'api_key=' + apiKey;
 }
 
-export const getFoodsAsync = function(query, dispatch) {
+export const getFoodsAsync = function(query) {
   let body = {
     query: query,
   };

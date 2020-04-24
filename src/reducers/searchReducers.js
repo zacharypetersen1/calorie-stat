@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_SEARCH_RESULTS, SET_SEARCH_QUERY, SET_OLD_SEARCH_QUERY } from '../actions/types';
+import { SET_SEARCH_RESULTS, SET_SEARCH_QUERY } from '../actions/types';
 
 export const results = function(state = [], action) {
   switch(action.type) {
@@ -19,10 +19,10 @@ export const query = function (state = '', action) {
   }
 }
 
-export const oldQuery = function (state= '', action) {
+export const lastQuery = function (state= '', action) {
   switch(action.type) {
-    case SET_OLD_SEARCH_QUERY:
-      return action.payload;
+    case SET_SEARCH_RESULTS:
+      return action.query;
     default:
       return state;
   }
@@ -31,6 +31,6 @@ export const oldQuery = function (state= '', action) {
 const search = combineReducers({
   results,
   query,
-  oldQuery
+  lastQuery
 });
 export default search;
