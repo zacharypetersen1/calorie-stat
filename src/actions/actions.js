@@ -1,10 +1,11 @@
 import * as types from "./types";
 
-export function cacheSearchResults(results, query) {
+export function cacheSearchResults(results, query, totalHits) {
   return {
     type: types.CACHE_SEARCH_RESULTS,
     payload: results,
     query: query,
+    totalHits: totalHits,
   };
 }
 

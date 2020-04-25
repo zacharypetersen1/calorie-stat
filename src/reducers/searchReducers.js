@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { CACHE_SEARCH_RESULTS, SET_SEARCH_QUERY, LOAD_CACHED_RESULTS } from "../actions/types";
 
-export const foodCache = function (state = {}, action) {
+const foodCache = function (state = {}, action) {
   switch(action.type) {
     case CACHE_SEARCH_RESULTS:
       const foods = action.payload.reduce((map, obj) => {
@@ -14,7 +14,7 @@ export const foodCache = function (state = {}, action) {
   }
 }
 
-export const searchResultCache = function (state = {"":[]}, action) {
+const searchResultCache = function (state = {}, action) {
   switch (action.type) {
     case CACHE_SEARCH_RESULTS:
       const foodIds = action.payload.map((obj) => obj.fdcId);
@@ -26,7 +26,18 @@ export const searchResultCache = function (state = {"":[]}, action) {
   }
 };
 
-export const query = function (state = "", action) {
+const totalHits = function (state = {}, action) {
+  switch (action.type) {
+    case CACHE_SEARCH_RESULTS:
+      let newState = {...state};
+      newState[action.query] = action.totalHits;
+      return newState;
+    default:
+      return state;
+  }
+}
+
+const query = function (state = "", action) {
   switch (action.type) {
     case SET_SEARCH_QUERY:
       return action.payload;
@@ -35,7 +46,7 @@ export const query = function (state = "", action) {
   }
 };
 
-export const lastQuery = function (state = "", action) {
+const lastQuery = function (state = "", action) {
   switch (action.type) {
     case CACHE_SEARCH_RESULTS:
       return action.query;
@@ -48,7 +59,8 @@ export const lastQuery = function (state = "", action) {
 
 const search = combineReducers({
   foodCache,
-  searchResultCache: searchResultCache,
+  searchResultCache,
+  totalHits,
   query,
   lastQuery,
 });

@@ -11,7 +11,7 @@ export function handleSearch() {
     }
     else {
       getFoodsAsync(search.query).then((data) => {
-        store.dispatch(cacheSearchResults(data.foods, search.query));
+        store.dispatch(cacheSearchResults(data.foods, search.query, data.totalHits));
       });
     }
   }

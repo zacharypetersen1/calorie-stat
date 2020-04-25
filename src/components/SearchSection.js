@@ -7,6 +7,7 @@ import { handleSearch } from "../scripts/eventHandlers";
 export default function SearchSection() {
   const dispatch = useDispatch();
   const query = useSelector((state) => state.search.query);
+  const lastQuery = useSelector((state) => state.search.lastQuery);
 
   return (
     <div>
@@ -23,7 +24,7 @@ export default function SearchSection() {
       <button type="button" onClick={() => handleSearch()}>
         Search
       </button>
-      <SearchResults />
+      {lastQuery === '' ? <p>TODO add search message here</p> : <SearchResults />}
     </div>
   );
 }
