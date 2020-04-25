@@ -6,7 +6,7 @@ export function handleSearch() {
   const search = store.getState().search;
 
   if (search.query !== search.lastQuery && search.query !== "") {
-    if(search.cachedResults.hasOwnProperty(search.query)) {
+    if(search.searchResultCache.hasOwnProperty(search.query)) {
       store.dispatch(loadCachedResults(search.query));
     }
     else {

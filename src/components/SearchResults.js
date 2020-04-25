@@ -2,15 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export default function SearchResults() {
-  const cachedResults = useSelector((state) => state.search.cachedResults);
+  const foodCache = useSelector((state) => state.search.foodCache);
+  const searchResultCache = useSelector((state) => state.search.searchResultCache);
   const lastQuery = useSelector((state) => state.search.lastQuery);
 
   return (
     <ul>
-      {cachedResults[lastQuery].map((result) => (
-        <li key={result.fdcId}>
-          <span>{result.description}</span>
-          <span style={{ marginLeft: "10px" }}>{result.brandOwner}</span>
+      {searchResultCache[lastQuery].map((foodId) => (
+        <li key={foodId}>
+          <span>{foodCache[foodId].description}</span>
+          <span style={{ marginLeft: "10px" }}>{foodCache[foodId].brandOwner}</span>
         </li>
       ))}
     </ul>

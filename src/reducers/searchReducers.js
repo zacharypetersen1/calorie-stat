@@ -14,11 +14,12 @@ export const foodCache = function (state = {}, action) {
   }
 }
 
-export const cachedResults = function (state = {"":[]}, action) {
+export const searchResultCache = function (state = {"":[]}, action) {
   switch (action.type) {
     case CACHE_SEARCH_RESULTS:
+      const foodIds = action.payload.map((obj) => obj.fdcId);
       let newState = {...state};
-      newState[action.query] = action.payload;
+      newState[action.query] = foodIds;
       return newState;
     default:
       return state;
@@ -47,7 +48,7 @@ export const lastQuery = function (state = "", action) {
 
 const search = combineReducers({
   foodCache,
-  cachedResults,
+  searchResultCache: searchResultCache,
   query,
   lastQuery,
 });
