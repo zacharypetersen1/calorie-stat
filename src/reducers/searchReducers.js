@@ -19,7 +19,10 @@ const searchResultCache = function (state = {}, action) {
     case CACHE_SEARCH_RESULTS:
       const foodIds = action.payload.map((obj) => obj.fdcId);
       let newState = {...state};
-      newState[action.query] = foodIds;
+      if(!newState.hasOwnProperty(action.query)){
+        newState[action.query] = [];
+      }
+      newState[action.query] = [...newState[action.query], ...foodIds];
       return newState;
     default:
       return state;

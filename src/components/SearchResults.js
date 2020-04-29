@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { handleLoadMore } from "../scripts/eventHandlers";
 
 export default function SearchResults() {
   const foodCache = useSelector((state) => state.search.foodCache);
@@ -17,7 +18,7 @@ export default function SearchResults() {
           </li>
         ))}
       </ul>
-      {searchResults.length < totalHits ? <button>Load More Results</button> : null}
+      {searchResults.length < totalHits ? <button type="button" onClick={() => handleLoadMore()}>Load More Results</button> : null}
     </div>
   );
 }

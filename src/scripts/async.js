@@ -9,9 +9,10 @@ function apiKeyArg() {
   return "api_key=" + apiKey;
 }
 
-export const getFoodsAsync = function (query) {
+export const getFoodsAsync = function (query, pageNumber = 0) {
   let body = {
     query: query,
+    pageNumber: pageNumber,
   };
   let url = baseURL + searchURL + "?" + apiKeyArg();
 
