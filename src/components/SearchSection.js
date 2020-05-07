@@ -1,29 +1,14 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
-import { useDispatch, useSelector } from "react-redux";
-import { setSearchQuery } from "../actions/actions";
-import { handleSearch } from "../scripts/eventHandlers";
+import { useSelector } from "react-redux";
 
 export default function SearchSection() {
-  const dispatch = useDispatch();
-  const query = useSelector((state) => state.search.query);
   const lastQuery = useSelector((state) => state.search.lastQuery);
 
   return (
-    <div>
-      <label htmlFor="foodName">Food Name</label>
-      <input
-        type="text"
-        value={query}
-        id="foodName"
-        onChange={(e) => dispatch(setSearchQuery(e.target.value))}
-        onKeyUp={(e) => {
-          if (e.keyCode === 13) handleSearch();
-        }}
-      />
-      <button type="button" onClick={() => handleSearch()}>
-        Search
-      </button>
+    <div className="search-section">
+      <SearchBar />
       {lastQuery === '' ? <p>TODO add search message here</p> : <SearchResults />}
     </div>
   );

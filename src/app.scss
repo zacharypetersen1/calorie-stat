@@ -1,0 +1,24 @@
+.app-container{
+  background-color: red;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
+.search-section {
+  background-color: blue;
+  width: 25%;
+  height: 100%;
+}
+
+.cart-section {
+  background-color: green;
+  width: 25%;
+  height: 100%;
+}
+
+.outcome-section {
+  background-color: yellow;
+  width: 50%;
+  height: 100%;
+}

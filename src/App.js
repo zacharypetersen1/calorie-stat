@@ -1,13 +1,15 @@
 import React from "react";
-import Header from "./components/Header";
 import SearchSection from "./components/SearchSection";
+import CartSection from "./components/CartSection";
+import OutcomeSection from "./components/OutcomeSection";
 import "./app.scss";
 
 function App() {
   return (
-    <div>
-      <Header />
+    <div className="app-container">
       <SearchSection />
+      <CartSection />
+      <OutcomeSection />
     </div>
   );
 }
