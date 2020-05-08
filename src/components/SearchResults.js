@@ -10,16 +10,18 @@ export default function SearchResults() {
   const totalHits = useSelector((state) => state.search.totalHits[lastQuery]);
 
   return (
-    <div>
-      <ul>
-        {searchResults.map((foodId) => (
-          <li key={foodId}>
-            <span>{foodCache[foodId].description}</span>
-            <span style={{ marginLeft: "10px" }}>{foodCache[foodId].brandOwner}</span>
-          </li>
-        ))}
-      </ul>
-      {searchResults.length < totalHits ? <Button variant="outline-secondary" className="load-more-button" onClick={() => handleLoadMore()}>Load More Results</Button> : null}
+    <div className="search-results-wrapper">
+      <div className="search-results-container">
+        <ul>
+          {searchResults.map((foodId) => (
+            <li key={foodId}>
+              <span>{foodCache[foodId].description}</span>
+              <span style={{ marginLeft: "10px" }}>{foodCache[foodId].brandOwner}</span>
+            </li>
+          ))}
+        </ul>
+        {searchResults.length < totalHits ? <Button variant="outline-secondary" className="load-more-button" onClick={() => handleLoadMore()}>Load More Results</Button> : null}
+      </div>
     </div>
   );
 }

@@ -31,6 +31,19 @@ $section-head: 58px;
   height: $section-head;
 }
 
+.search-results-wrapper {
+  height: 100%;
+  position: relative;
+  top: -$section-head;
+  padding-top: $section-head;
+}
+
+.search-results-container {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .search-bar {
   background-color: aqua;
   width: 100%;
