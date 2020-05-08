@@ -15,26 +15,21 @@ export default function SearchBar() {
       <div className="search-bar">
       <InputGroup className="mb-3">
         <FormControl
+          value={query}
+          onChange={(e) => dispatch(setSearchQuery(e.target.value))}
+          onKeyUp={(e) => {
+            if (e.keyCode === 13) handleSearch();
+          }}
           placeholder="Apple, Oreo, Chicken..."
           aria-label="Apple, Oreo, Chicken..."
           aria-describedby="basic-addon2"
         />
         <InputGroup.Append>
-          <Button variant="outline-secondary">Button</Button>
+          <Button variant="outline-secondary" onClick={() => handleSearch()}>
+            Search
+          </Button>
         </InputGroup.Append>
       </InputGroup>
-        {/*<input
-          type="text"
-          value={query}
-          id="foodName"
-          onChange={(e) => dispatch(setSearchQuery(e.target.value))}
-          onKeyUp={(e) => {
-            if (e.keyCode === 13) handleSearch();
-          }}
-        />
-        <button type="button" onClick={() => handleSearch()}>
-          S
-        </button>*/}
       </div>
     </div>
   )
