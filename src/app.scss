@@ -40,8 +40,11 @@ $section-head: 58px;
 
 .search-results-container {
   height: 100%;
+  overflow: hidden;
+}
+
+.search-results-container:hover {
   overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 .search-bar {
@@ -52,4 +55,12 @@ $section-head: 58px;
 .load-more-button {
   display: block;
   margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
 }
