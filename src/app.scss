@@ -2,14 +2,12 @@ $section-head: 58px;
 $scroll-bar-width: 10px;
 
 .app-container{
-  background-color: red;
   width: 100vw;
   height: 100vh;
   display: flex;
 }
 
 .search-section {
-  background-color: blue;
   width: 25%;
   height: 100%;
 }
@@ -28,7 +26,6 @@ $scroll-bar-width: 10px;
 
 .search-bar-container {
   padding: 10px;
-  background-color: orange;
   height: $section-head;
   position: relative;
   z-index: 1;
@@ -68,4 +65,22 @@ $scroll-bar-width: 10px;
 
 ::-webkit-scrollbar-thumb {
   background: #888; 
+}
+
+.search-result {
+  cursor: pointer;
+  padding: 3px 6px 3px 6px;
+}
+
+.search-result:hover {
+  background-color: #EEE;
+}
+
+.search-result-brand {
+  color: #888;
+  margin-left: 5px;
+}
+
+.search-result-check {
+  margin: 0px;
 }
