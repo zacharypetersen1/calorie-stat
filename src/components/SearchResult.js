@@ -7,7 +7,8 @@ export default function SearchResult(props) {
 
   return (
     <div key={props.foodId} className="search-result">
-      <FormCheck inline className="search-result-check" />
+      {/*<FormCheck inline className="search-result-check" />*/}
+      <input type="checkbox" className="search-result-check" />
       <span>{foodCache[props.foodId].description}</span>
       <span className="search-result-brand">{foodCache[props.foodId].brandOwner}</span>
     </div>
