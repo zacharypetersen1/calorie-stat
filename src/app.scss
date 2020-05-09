@@ -30,6 +30,12 @@ $scroll-bar-width: 10px;
   padding: 10px;
   background-color: orange;
   height: $section-head;
+  position: relative;
+  z-index: 1;
+}
+
+.search-bar {
+  border-radius: 19px;
 }
 
 .search-results-wrapper {
@@ -49,10 +55,6 @@ $scroll-bar-width: 10px;
 .search-results-container:hover {
   overflow-y: scroll;
   padding-right: 0px;
-}
-
-.search-bar {
-  background-color: aqua;
 }
 
 .load-more-button {
