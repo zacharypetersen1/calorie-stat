@@ -9,7 +9,7 @@ export default function SearchResult(props) {
       <div className="search-result-check-container">
         <input type="checkbox" className="search-result-check" />
       </div>
-      <div className="search-result-info-container">
+      <div>
         <span>{foodCache[props.foodId].description}</span>
         <span className="search-result-brand">{foodCache[props.foodId].brandOwner}</span>
       </div>
