@@ -71,6 +71,7 @@ $scroll-bar-width: 10px;
   display: flex;
   cursor: pointer;
   padding: 6px 0px 6px 10px;
+  border-bottom: 1px solid #DDD;
 }
 
 .search-result:hover {
@@ -80,10 +81,6 @@ $scroll-bar-width: 10px;
 .search-result-check-container {
   display: flex;
   align-items: center;
-}
-
-.search-result-info-container {
-
 }
 
 .search-result-check {
