@@ -68,6 +68,7 @@ $scroll-bar-width: 10px;
 }
 
 .search-result {
+  display: flex;
   cursor: pointer;
   padding: 6px 0px 6px 10px;
 }
@@ -76,12 +77,23 @@ $scroll-bar-width: 10px;
   background-color: #EEE;
 }
 
-.search-result-brand {
-  color: #888;
-  margin-left: 5px;
+.search-result-check-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-result-info-container {
+
 }
 
 .search-result-check {
   cursor: pointer;
   margin-right: 5px;
+  width: 18px;
+  height: 18px;
+}
+
+.search-result-brand {
+  color: #888;
+  margin-left: 5px;
 }
