@@ -16,3 +16,7 @@ export function loadCachedResults(query) {
 export function setSearchQuery(query) {
   return { type: types.SET_SEARCH_QUERY, payload: query };
 }
+
+export function toggleCartItem(id) {
+  return { type: types.TOGGLE_CART_ITEM, payload: id };
+}
