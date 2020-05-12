@@ -81,13 +81,28 @@ $scroll-bar-width: 10px;
 .search-result-check-container {
   display: flex;
   align-items: center;
+  padding-right: 10px;
 }
 
-.search-result-check {
-  cursor: pointer;
-  margin-right: 5px;
-  width: 18px;
-  height: 18px;
+.custom-check-box {
+  position: relative;
+  width: 19px;
+  height: 19px;
+  border-radius: 5px;
+  border: 1px solid #888;
+  background-color: white;
+}
+
+.checked::after {
+  transform: rotate(45deg);
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #888;
+  border-width: 0 2px 2px 0;
+  content: "";
 }
 
 .search-result-brand {
