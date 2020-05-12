@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleCartItem } from "../actions/actions";
+import classNames from "classnames";
 
 export default function SearchResult(props) {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export default function SearchResult(props) {
   return (
     <div key={props.foodId} onClick={ ()=>dispatch(toggleCartItem(props.foodId)) } className="search-result">
       <div className="search-result-check-container">
-        <span className="custom-check-box checked" />
+        <span className={classNames("custom-check-box", {"checked": isInCart})} />
       </div>
       <div>
         <span>{foodCache[props.foodId].description}</span>
