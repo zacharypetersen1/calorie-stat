@@ -10,13 +10,11 @@ export default function SearchResults() {
   const totalHits = useSelector((state) => state.search.totalHits[lastQuery]);
 
   return (
-    <div className="search-results-wrapper">
-      <div className="search-results-container">
-        {searchResults.map((foodId) => (
-          <SearchResult foodId={foodId} />
-        ))}
-        {searchResults.length < totalHits ? <Button variant="outline-secondary" className="load-more-button" onClick={() => handleLoadMore()}>Load More Results</Button> : null}
-      </div>
+    <div className="search-results-container">
+      {searchResults.map((foodId) => (
+        <SearchResult foodId={foodId} />
+      ))}
+      {searchResults.length < totalHits ? <Button variant="outline-secondary" className="load-more-button" onClick={() => handleLoadMore()}>Load More Results</Button> : null}
     </div>
   );
 }

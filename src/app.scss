@@ -10,6 +10,8 @@ $scroll-bar-width: 10px;
 .search-section {
   width: 25%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .cart-section {
@@ -27,23 +29,15 @@ $scroll-bar-width: 10px;
 .search-bar-container {
   padding: 10px;
   height: $section-head;
-  position: relative;
-  z-index: 1;
+  /*position: relative;
+  z-index: 1;*/
 }
 
 .search-bar {
   border-radius: 19px;
 }
 
-.search-results-wrapper {
-  height: 100%;
-  position: relative;
-  top: -$section-head;
-  padding-top: $section-head;
-}
-
 .search-results-container {
-  height: 100%;
   overflow: hidden;
   width: 100%;
   padding-right: $scroll-bar-width;
