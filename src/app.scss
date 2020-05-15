@@ -39,6 +39,8 @@ $scroll-bar-width: 10px;
 
 .search-results-container {
   height: calc(100% - #{$section-head});
+  overflow-x: hidden;
+  padding-right: 10px;
 }
 
 .load-more-button {
@@ -88,4 +90,21 @@ $scroll-bar-width: 10px;
   color: #888;
   margin-left: 5px;
   font-size: 12px;
+}
+
+.simplebar-scrollbar:before {
+  border-radius: 0px;
+  left: 0;
+  right: 0;
+  transition: none;
+}
+
+.simplebar-track.simplebar-vertical {
+  top: 0;
+  width: 10px;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+  top: 0;
+  bottom: 0;
 }

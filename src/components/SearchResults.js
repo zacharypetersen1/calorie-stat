@@ -12,7 +12,7 @@ export default function SearchResults() {
   const totalHits = useSelector((state) => state.search.totalHits[lastQuery]);
 
   return (
-    <SimpleBar className="search-results-container">
+    <SimpleBar autoHide={false} className="search-results-container">
       {searchResults.map((foodId) => (
         <SearchResult foodId={foodId} />
       ))}
