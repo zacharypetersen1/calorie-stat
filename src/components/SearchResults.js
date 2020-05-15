@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { handleLoadMore } from "../scripts/eventHandlers";
 import Button from "react-bootstrap/Button";
 import SearchResult from "./SearchResult";
+import SimpleBar from "simplebar-react";
+import 'simplebar/dist/simplebar.min.css';
 
 export default function SearchResults() {
   const lastQuery = useSelector((state) => state.search.lastQuery);
@@ -10,11 +12,11 @@ export default function SearchResults() {
   const totalHits = useSelector((state) => state.search.totalHits[lastQuery]);
 
   return (
-    <div className="search-results-container">
+    <SimpleBar className="search-results-container">
       {searchResults.map((foodId) => (
         <SearchResult foodId={foodId} />
       ))}
       {searchResults.length < totalHits ? <Button variant="outline-secondary" className="load-more-button" onClick={() => handleLoadMore()}>Load More Results</Button> : null}
-    </div>
+    </SimpleBar>
   );
 }

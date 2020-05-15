@@ -38,27 +38,12 @@ $scroll-bar-width: 10px;
 }
 
 .search-results-container {
-  overflow: hidden;
-  width: 100%;
-  padding-right: $scroll-bar-width;
-}
-
-.search-results-container:hover {
-  overflow-y: scroll;
-  padding-right: 0px;
+  height: calc(100% - #{$section-head});
 }
 
 .load-more-button {
   display: block;
   margin: 20px auto;
-}
-
-::-webkit-scrollbar {
-  width: $scroll-bar-width;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #888; 
 }
 
 .search-result {
