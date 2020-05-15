@@ -11,6 +11,9 @@ export default function SearchResults() {
   const searchResults = useSelector((state) => state.search.searchResultCache[lastQuery]);
   const totalHits = useSelector((state) => state.search.totalHits[lastQuery]);
 
+  if (lastQuery === '') {
+    return <p>TODO add search message here</p>;
+  }
   return (
     <SimpleBar autoHide={false} className="search-results-container">
       {searchResults.map((foodId) => (
