@@ -25,8 +25,6 @@ $servings-width: 80px;
 .search-bar-container {
   padding: 10px;
   height: $section-head;
-  /*position: relative;
-  z-index: 1;*/
 }
 
 .search-bar {
@@ -36,7 +34,7 @@ $servings-width: 80px;
 .search-results-container {
   height: calc(100% - #{$section-head});
   overflow-x: hidden;
-  padding-right: 10px;
+  padding-right: $scroll-bar-width;
 }
 
 .load-more-button {
@@ -88,6 +86,11 @@ $servings-width: 80px;
   font-size: 12px;
 }
 
+
+.simplebar-content {
+  padding-right: $scroll-bar-width;
+}
+
 .simplebar-scrollbar:before {
   border-radius: 0px;
   left: 0;
@@ -97,7 +100,7 @@ $servings-width: 80px;
 
 .simplebar-track.simplebar-vertical {
   top: 0;
-  width: 10px;
+  width: $scroll-bar-width;
 }
 
 .simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
@@ -114,9 +117,12 @@ $servings-width: 80px;
 }
 
 .cart-header {
+  background-color: darken($primary, 25%);
+  color: $primary;
   height: $section-head;
   display: flex;
   align-items: center;
+  padding-right: $scroll-bar-width;
 }
 
 .cart-name {
