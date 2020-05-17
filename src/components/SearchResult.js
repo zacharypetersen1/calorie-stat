@@ -7,13 +7,12 @@ export default function SearchResult(props) {
   const dispatch = useDispatch();
   const foodCache = useSelector((state) => state.search.foodCache);
   const itemSet = useSelector((state) => state.cart.itemSet);
-  const isInCart = itemSet.has(props.foodId);
+  const isInCart = itemSet.has(props.id);
 
   return (
-    <div 
-      key={props.foodId} 
+    <div
       onClick={ 
-        ()=>dispatch(isInCart ? removeFromCart(props.foodId) : addToCart(props.foodId))
+        ()=>dispatch(isInCart ? removeFromCart(props.id) : addToCart(props.id))
       }
       className="search-result"
     >
@@ -21,8 +20,8 @@ export default function SearchResult(props) {
         <span className={classNames("custom-check-box", {"checked": isInCart})} />
       </div>
       <div>
-        <span>{foodCache[props.foodId].description}</span>
-        <span className="search-result-brand">{foodCache[props.foodId].brandOwner}</span>
+        <span>{foodCache[props.id].description}</span>
+        <span className="search-result-brand">{foodCache[props.id].brandOwner}</span>
       </div>
     </div>
   )

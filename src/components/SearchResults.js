@@ -17,7 +17,7 @@ export default function SearchResults() {
   return (
     <SimpleBar autoHide={false} className="search-results-container">
       {searchResults.map((foodId) => (
-        <SearchResult foodId={foodId} />
+        <SearchResult key={foodId} id={foodId} />
       ))}
       {searchResults.length < totalHits ? <Button variant="outline-secondary" className="load-more-button" onClick={() => handleLoadMore()}>Load More Results</Button> : null}
     </SimpleBar>

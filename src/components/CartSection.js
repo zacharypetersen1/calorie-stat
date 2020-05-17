@@ -18,7 +18,7 @@ export default function CartSection() {
         </div>
       </div>
       <Simplebar className="cart" autoHide={false}>
-        {itemList.map(id => <CartItem foodId={id} />)}
+        {itemList.map(id => <CartItem key={id} id={id} />)}
       </Simplebar>
     </div>
   )

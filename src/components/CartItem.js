@@ -6,7 +6,7 @@ export default function CartItem(props) {
   
   return (
     <div>
-      {foodCache[props.foodId].description}
+      {foodCache[props.id].description}
     </div>
   )
 }
