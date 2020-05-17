@@ -17,6 +17,10 @@ export function setSearchQuery(query) {
   return { type: types.SET_SEARCH_QUERY, payload: query };
 }
 
-export function toggleCartItem(id) {
-  return { type: types.TOGGLE_CART_ITEM, payload: id };
+export function addToCart(id) {
+  return { type: types.ADD_TO_CART, payload: id };
+}
+
+export function removeFromCart(id) {
+  return { type: types.REMOVE_FROM_CART, payload: id };
 }

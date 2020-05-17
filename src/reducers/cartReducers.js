@@ -1,24 +1,35 @@
 import { combineReducers } from "redux";
-import { TOGGLE_CART_ITEM } from "../actions/types";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/types";
 
-const items = function(state = new Set(), action) {
+const itemSet = function(state = new Set(), action) {
   switch(action.type) {
-    case TOGGLE_CART_ITEM:
-      let newState = new Set(state);
-      if(newState.has(action.payload)) {
-        newState.delete(action.payload);
-      }
-      else {
-        newState.add(action.payload);
-      }
-      return newState;
+    case ADD_TO_CART:
+      let addState = new Set(state);
+      addState.add(action.payload);
+      return addState;
+    case REMOVE_FROM_CART:
+      let remState = new Set(state);
+      remState.delete(action.payload);
+      return remState;
+    default: 
+      return state;
+  }
+};
+
+const itemList = function(state = [], action) {
+  switch(action.type) {
+    case ADD_TO_CART:
+      return [...state, action.payload];
+    case REMOVE_FROM_CART:
+      return state.filter(id => id !== action.payload);
     default: 
       return state;
   }
 };
 
 const cart = combineReducers({
-    items,
+    itemSet,
+    itemList,
 });
 
 export default cart;
