@@ -1,6 +1,12 @@
-import React from 'react'
+import React from "react"
+import Simplebar from "simplebar-react";
+import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
+
 
 export default function CartSection() {
+  const itemList = useSelector((state) => state.cart.itemList);
+
   return (
     <div className="cart-section">
       <div className="cart-header">
@@ -11,8 +17,9 @@ export default function CartSection() {
           Servings
         </div>
       </div>
-      <div className="cart">
-      </div>
+      <Simplebar className="cart" autoHide={false}>
+        {itemList.map(id => <CartItem foodId={id} />)}
+      </Simplebar>
     </div>
   )
 }
