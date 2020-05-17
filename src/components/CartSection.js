@@ -1,5 +1,5 @@
 import React from "react"
-import Simplebar from "simplebar-react";
+import SimpleBar from "simplebar-react";
 import CartItem from "./CartItem";
 import { useSelector } from "react-redux";
 
@@ -17,9 +17,9 @@ export default function CartSection() {
           Servings
         </div>
       </div>
-      <Simplebar className="cart" autoHide={false}>
+      <SimpleBar autoHide={false} className="section-scroll cart">
         {itemList.map(id => <CartItem key={id} id={id} />)}
-      </Simplebar>
+      </SimpleBar>
     </div>
   )
 }

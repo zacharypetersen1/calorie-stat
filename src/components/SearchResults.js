@@ -15,7 +15,7 @@ export default function SearchResults() {
     return <p>TODO add search message here</p>;
   }
   return (
-    <SimpleBar autoHide={false} className="search-results-container">
+    <SimpleBar autoHide={false} className="section-scroll">
       {searchResults.map((foodId) => (
         <SearchResult key={foodId} id={foodId} />
       ))}

@@ -27,14 +27,14 @@ $servings-width: 80px;
   height: $section-head;
 }
 
-.search-bar {
-  border-radius: 19px;
-}
-
-.search-results-container {
+.section-scroll {
   height: calc(100% - #{$section-head});
   overflow-x: hidden;
   padding-right: $scroll-bar-width;
+}
+
+.search-bar {
+  border-radius: 19px;
 }
 
 .load-more-button {
@@ -136,6 +136,37 @@ $servings-width: 80px;
 }
 
 .cart {
-  height: calc(100% - #{$section-head});
   background-color: darken($primary, 10%);
+}
+
+.cart-item {
+  display: flex;
+
+  &-remove {
+    width:30px;
+    height: 30px;
+    border-radius: 30px;
+  }
+
+  &-text {
+    width: calc(100% - 38px - #{$servings-width});
+    background-color: yellow;
+  }
+
+  &-servings {
+    width: $servings-width;
+    background-color: blue;
+  }
+}
+
+.cart-item > Button {
+
+}
+
+.cart-item > p {
+
+}
+
+.cart-item > div {
+
 }
