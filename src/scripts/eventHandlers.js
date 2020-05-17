@@ -18,7 +18,6 @@ export function handleSearch() {
 }
 
 export function handleLoadMore() {
-  console.log("hi");
   const search = store.getState().search;
   const pageNumber = (search.searchResultCache[search.lastQuery].length / 50) + 1;
   getFoodsAsync(search.lastQuery, pageNumber).then((data) => {
