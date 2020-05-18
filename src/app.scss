@@ -150,8 +150,10 @@ $select-color: #CBDCFF;
 }
 
 .cart-item {
+  padding: 6px 0;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid darken($primary, 30%);
 
   &-remove {
     display:flex;
@@ -160,21 +162,28 @@ $select-color: #CBDCFF;
     font-size: 24px;
     width:$remove-button-width;
     height: 30px;
-    color: darken($primary, 80%);
+    opacity: 0;
+  }
+
+  &-text {
+    width: calc(100% - #{$remove-button-width} - #{$servings-width});
+  }
+
+  &-servings {
+    width: $servings-width;
+  }
+}
+
+.cart-item:hover {
+  box-shadow: inset 0 0 5px #AAA;
+
+  .cart-item-remove {
+    opacity: 100%;
+    color: darken($primary, 50%);
 
     &:hover {
       color: darken($primary, 90%);
       cursor: pointer;
     }
-  }
-
-  &-text {
-    width: calc(100% - #{$remove-button-width} - #{$servings-width});
-    background-color: yellow;
-  }
-
-  &-servings {
-    width: $servings-width;
-    background-color: blue;
   }
 }
