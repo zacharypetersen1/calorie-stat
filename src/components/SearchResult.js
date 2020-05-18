@@ -14,10 +14,10 @@ export default function SearchResult(props) {
       onClick={ 
         ()=>dispatch(isInCart ? removeFromCart(props.id) : addToCart(props.id))
       }
-      className="search-result"
+      className={classNames("search-result", {"checked": isInCart})}
     >
       <div className="search-result-check-container">
-        <span className={classNames("custom-check-box", {"checked": isInCart})} />
+        <span className="custom-check-box" />
       </div>
       <div>
         <span>{foodCache[props.id].description}</span>

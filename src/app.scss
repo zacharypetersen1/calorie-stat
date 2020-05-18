@@ -3,6 +3,7 @@ $section-head: 58px;
 $scroll-bar-width: 10px;
 $servings-width: 80px;
 $remove-button-width: 30px;
+$select-color: #CBDCFF;
 
 .app-container{
   width: 100vw;
@@ -48,10 +49,10 @@ $remove-button-width: 30px;
   cursor: pointer;
   padding: 6px 0px 6px 10px;
   border-bottom: 1px solid #DDD;
-}
 
-.search-result:hover {
-  background-color: #EEE;
+  &:hover {
+    background-color: darken($primary, 7%);
+  }
 }
 
 .search-result-check-container {
@@ -69,7 +70,15 @@ $remove-button-width: 30px;
   background-color: white;
 }
 
-.checked::after {
+.checked{
+  background-color: $select-color;
+
+  &:hover {
+    background-color: darken($select-color, 5%);
+  }
+}
+
+.checked .custom-check-box::after {
   transform: rotate(45deg);
   position: absolute;
   left: 6px;
