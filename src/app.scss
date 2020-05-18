@@ -2,6 +2,7 @@ $primary: #FFF;
 $section-head: 58px;
 $scroll-bar-width: 10px;
 $servings-width: 80px;
+$remove-button-width: 30px;
 
 .app-container{
   width: 100vw;
@@ -143,13 +144,13 @@ $servings-width: 80px;
   display: flex;
 
   &-remove {
-    width:30px;
+    width:$remove-button-width;
     height: 30px;
     border-radius: 30px;
   }
 
   &-text {
-    width: calc(100% - 38px - #{$servings-width});
+    width: calc(100% - #{$remove-button-width} - #{$servings-width});
     background-color: yellow;
   }
 
@@ -157,16 +158,4 @@ $servings-width: 80px;
     width: $servings-width;
     background-color: blue;
   }
-}
-
-.cart-item > Button {
-
-}
-
-.cart-item > p {
-
-}
-
-.cart-item > div {
-
 }
