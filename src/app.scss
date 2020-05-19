@@ -192,7 +192,8 @@ $select-color: #CBDCFF;
 
 .servings-form {
   padding: 6px;
-  width: calc(#{$servings-width - 2 * $servings-button-width})
+  width: calc(#{$servings-width - 2 * $servings-button-width});
+  text-align: center;
 }
 
 .cart-item:hover {
