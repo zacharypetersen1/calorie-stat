@@ -2,6 +2,7 @@ $primary: #FFF;
 $section-head: 58px;
 $scroll-bar-width: 10px;
 $servings-width: 80px;
+$servings-button-width: 24px;
 $remove-button-width: 30px;
 $select-color: #CBDCFF;
 
@@ -168,10 +169,30 @@ $select-color: #CBDCFF;
   &-text {
     width: calc(100% - #{$remove-button-width} - #{$servings-width});
   }
+}
 
-  &-servings {
-    width: $servings-width;
-  }
+.cart-item-servings {
+  display: flex;
+  align-items: center;
+  width: $servings-width;
+}
+
+.servings-button {
+  padding: 0;
+  margin: 0 2px;
+  width: calc(#{$servings-button-width - 4});
+  height: calc(#{$servings-button-width - 4});
+  border-radius: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.servings-form {
+  padding: 6px;
+  width: calc(#{$servings-width - 2 * $servings-button-width})
 }
 
 .cart-item:hover {
@@ -184,5 +205,9 @@ $select-color: #CBDCFF;
       color: darken($primary, 90%);
       cursor: pointer;
     }
+  }
+
+  .servings-button {
+    opacity: 100%;
   }
 }
