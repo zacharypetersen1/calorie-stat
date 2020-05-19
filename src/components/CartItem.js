@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 
 export default function CartItem(props) {
   const foodCache = useSelector((state) => state.search.foodCache);
+  const servings = useSelector((state) => state.cart.servingsMap.get(props.id));
   const dispatch = useDispatch();
   
   return (
@@ -22,7 +23,7 @@ export default function CartItem(props) {
         <Button className="servings-button">
           <FontAwesomeIcon icon={ faMinus } />
         </Button>
-        <FormControl className="servings-form" />
+        <FormControl className="servings-form" value={ servings } />
         <Button className="servings-button">
           <FontAwesomeIcon icon={ faPlus } />
         </Button>
