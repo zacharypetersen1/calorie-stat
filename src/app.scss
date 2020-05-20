@@ -48,7 +48,7 @@ $select-color: #CBDCFF;
 .search-result {
   display: flex;
   cursor: pointer;
-  padding: 6px 0px 6px 10px;
+  //padding: 6px 0px 6px 10px;
   border-bottom: 1px solid #DDD;
 
   &:hover {
@@ -59,7 +59,7 @@ $select-color: #CBDCFF;
 .search-result-check-container {
   display: flex;
   align-items: center;
-  padding-right: 10px;
+  padding: 0 10px;
 }
 
 .custom-check-box {
@@ -89,6 +89,10 @@ $select-color: #CBDCFF;
   border: solid #888;
   border-width: 0 2px 2px 0;
   content: "";
+}
+
+.search-result-text {
+  margin: 14px 0;
 }
 
 .search-result-brand {
@@ -151,7 +155,6 @@ $select-color: #CBDCFF;
 }
 
 .cart-item {
-  padding: 6px 0;
   display: flex;
   align-items: center;
   border-bottom: 1px solid darken($primary, 30%);
@@ -167,6 +170,7 @@ $select-color: #CBDCFF;
   }
 
   &-text {
+    margin: 14px 0;
     width: calc(100% - #{$remove-button-width} - #{$servings-width});
   }
 }
