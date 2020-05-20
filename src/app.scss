@@ -1,10 +1,12 @@
 $primary: #FFF;
+$select-color: #CBDCFF;
+$remove-color: #dd3a44;
 $section-head: 58px;
 $scroll-bar-width: 10px;
 $servings-width: 80px;
 $servings-button-width: 24px;
 $remove-button-width: 30px;
-$select-color: #CBDCFF;
+
 
 .app-container{
   width: 100vw;
@@ -204,10 +206,10 @@ $select-color: #CBDCFF;
 
   .cart-item-remove {
     opacity: 100%;
-    color: darken($primary, 50%);
+    color: lighten($remove-color, 22%);
 
     &:hover {
-      color: darken($primary, 90%);
+      color: $remove-color;
       cursor: pointer;
     }
   }
