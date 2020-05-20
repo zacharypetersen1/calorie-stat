@@ -25,14 +25,14 @@ export function handleLoadMore() {
   });
 }
 
-export function handleServingsOnChange(id, str) {
+export function handleServingsFormChange(id, str) {
   if(str.match(/^\d{0,2}$/)) {
     const newServings = str === "" ? 0 : parseInt(str);
     store.dispatch(changeServings(id, newServings));
   }
 }
 
-export function handleNewServings(id, newServings) {
+export function handleServingsChange(id, newServings) {
   if(newServings >= 0 && newServings <= 99) {
     store.dispatch(changeServings(id, newServings));
   }
