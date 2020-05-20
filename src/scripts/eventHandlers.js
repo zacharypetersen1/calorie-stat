@@ -31,3 +31,9 @@ export function handleServingsOnChange(id, str) {
     store.dispatch(changeServings(id, newServings));
   }
 }
+
+export function handleNewServings(id, newServings) {
+  if(newServings >= 0 && newServings <= 99) {
+    store.dispatch(changeServings(id, newServings));
+  }
+}

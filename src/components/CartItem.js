@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { handleServingsOnChange } from "../scripts/eventHandlers";
+import { handleServingsOnChange, handleNewServings } from "../scripts/eventHandlers";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
@@ -21,7 +21,10 @@ export default function CartItem(props) {
         {foodCache[props.id].description}
       </div>
       <div className="cart-item-servings">
-        <Button className="servings-button">
+        <Button
+          className="servings-button"
+          onClick={ () => handleNewServings(props.id, servings - 1) }
+        >
           <FontAwesomeIcon icon={ faMinus } />
         </Button>
         <FormControl 
@@ -29,7 +32,10 @@ export default function CartItem(props) {
           value={ servings }
           onChange={ (e) => handleServingsOnChange(props.id, e.target.value)}
         />
-        <Button className="servings-button">
+        <Button
+          className="servings-button"
+          onClick={ () => handleNewServings(props.id, servings + 1) }
+        >
           <FontAwesomeIcon icon={ faPlus } />
         </Button>
       </div>
