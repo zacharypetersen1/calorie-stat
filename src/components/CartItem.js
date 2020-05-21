@@ -30,7 +30,8 @@ export default function CartItem(props) {
         <FormControl 
           className="servings-form"
           value={ servings }
-          onChange={ (e) => handleServingsFormChange(props.id, e.target.value)}
+          onClick={ (e) => e.target.select() }
+          onChange={ (e) => handleServingsFormChange(props.id, e.target.value, e.target)}
         />
         <Button
           className="servings-button"

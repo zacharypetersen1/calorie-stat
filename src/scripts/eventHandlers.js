@@ -25,10 +25,14 @@ export function handleLoadMore() {
   });
 }
 
-export function handleServingsFormChange(id, str) {
+export function handleServingsFormChange(id, str, target) {
   if(str.match(/^\d{0,2}$/)) {
     const newServings = str === "" ? 0 : parseInt(str);
     store.dispatch(changeServings(id, newServings));
+  }
+  if(str === "") {
+    console.log("ran");
+    setTimeout(() => target.select(), 0);
   }
 }
 
