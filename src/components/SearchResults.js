@@ -19,7 +19,13 @@ export default function SearchResults() {
       {searchResults.map((foodId) => (
         <SearchResult key={foodId} id={foodId} />
       ))}
-      {searchResults.length < totalHits ? <Button variant="outline-secondary" className="load-more-button" onClick={() => handleLoadMore()}>Load More Results</Button> : null}
+      {searchResults.length < totalHits ? 
+        <Button 
+          variant="outline-secondary"
+          className="load-more-button"
+          tabIndex="3"
+          onClick={() => handleLoadMore()}>Load More Results
+        </Button> : null}
     </SimpleBar>
   );
 }

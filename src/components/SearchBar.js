@@ -24,12 +24,14 @@ export default function SearchBar() {
           }}
           placeholder="Apple, Oreo, Chicken..."
           aria-label="Apple, Oreo, Chicken..."
+          tabIndex="1"
         />
         <InputGroup.Append>
           <Button 
             variant="outline-secondary" 
             onClick={() => handleSearch()}
             className="search-bar"
+            tabIndex="2"
           >
             <FontAwesomeIcon icon={faSearch} />
           </Button>
