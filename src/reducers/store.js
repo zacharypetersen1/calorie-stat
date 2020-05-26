@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from "redux";
-import search from "./search";
 import cart from "./cart";
+import foods from "./foods";
+import search from "./search";
 
 const root = combineReducers({
-  search,
   cart,
+  foods,
+  search,
 });
 
 let store = createStore(

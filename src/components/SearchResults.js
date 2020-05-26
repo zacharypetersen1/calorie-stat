@@ -8,7 +8,7 @@ import 'simplebar/dist/simplebar.min.css';
 
 export default function SearchResults() {
   const lastQuery = useSelector((state) => state.search.lastQuery);
-  const searchResults = useSelector((state) => state.search.searchResultCache[lastQuery]);
+  const searchResults = useSelector((state) => state.search.resultCache[lastQuery]);
   const totalHits = useSelector((state) => state.search.totalHits[lastQuery]);
 
   if (lastQuery === '') {

@@ -8,7 +8,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
 export default function CartItem(props) {
-  const foodCache = useSelector((state) => state.search.foodCache);
+  const foodCache = useSelector((state) => state.foods.cache);
   const servings = useSelector((state) => state.cart.servingsMap.get(props.id));
   const dispatch = useDispatch();
   

@@ -6,7 +6,7 @@ export function handleSearch() {
   const search = store.getState().search;
 
   if (search.query !== search.lastQuery && search.query !== "") {
-    if(search.searchResultCache.hasOwnProperty(search.query)) {
+    if(search.resultCache.hasOwnProperty(search.query)) {
       store.dispatch(loadCachedResults(search.query));
     }
     else {
@@ -19,7 +19,7 @@ export function handleSearch() {
 
 export function handleLoadMore() {
   const search = store.getState().search;
-  const pageNumber = (search.searchResultCache[search.lastQuery].length / 50) + 1;
+  const pageNumber = (search.resultCache[search.lastQuery].length / 50) + 1;
   getFoodsAsync(search.lastQuery, pageNumber).then((data) => {
     store.dispatch(cacheSearchResults(data.foods, search.lastQuery, data.totalHits));
   });

@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 export default function SearchResult(props) {
   const dispatch = useDispatch();
-  const foodCache = useSelector((state) => state.search.foodCache);
+  const foodCache = useSelector((state) => state.foods.cache);
   const itemSet = useSelector((state) => state.cart.itemSet);
   const isInCart = itemSet.has(props.id);
 
