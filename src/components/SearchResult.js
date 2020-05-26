@@ -5,9 +5,8 @@ import classNames from "classnames";
 
 export default function SearchResult(props) {
   const dispatch = useDispatch();
-  const foodCache = useSelector((state) => state.foods.cache);
-  const itemSet = useSelector((state) => state.cart.itemSet);
-  const isInCart = itemSet.has(props.id);
+  const food = useSelector((state) => state.foods.cache[props.id]);
+  const isInCart = useSelector((state) => state.cart.itemSet.has(props.id));
 
   return (
     <div
@@ -20,8 +19,8 @@ export default function SearchResult(props) {
         <span className="custom-check-box" />
       </div>
       <div className="search-result-text">
-        <span>{foodCache[props.id].description}</span>
-        <span className="search-result-brand">{foodCache[props.id].brandOwner}</span>
+        <span>{food.description}</span>
+        <span className="search-result-brand">{food.brandOwner}</span>
       </div>
     </div>
   )

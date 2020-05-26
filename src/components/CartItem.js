@@ -8,7 +8,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
 export default function CartItem(props) {
-  const foodCache = useSelector((state) => state.foods.cache);
+  const food = useSelector((state) => state.foods.cache[props.id]);
   const servings = useSelector((state) => state.cart.servingsMap.get(props.id));
   const dispatch = useDispatch();
   
@@ -18,7 +18,7 @@ export default function CartItem(props) {
         <FontAwesomeIcon icon={ faTimes } />
       </div>
       <div className="cart-item-text">
-        {foodCache[props.id].description}
+        {food.description}
       </div>
       <div className="cart-item-servings">
         <Button
