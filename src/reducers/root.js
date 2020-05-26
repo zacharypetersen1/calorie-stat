@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import search from "./searchReducers";
-import cart from "./cartReducers";
+import search from "./search";
+import cart from "./cart";
 
 const root = combineReducers({
   search,
