@@ -2,15 +2,13 @@ import cart from "./cart.js";
 import * as types from "../actions/types";
 
 const initial = {
-  itemSet: new Set(),
-  itemList: [],
-  servingsMap: new Map(),
+  items: new Set(),
+  servings: new Map(),
 };
 
 const afterAdd = {
-  itemSet: new Set([555]),
-  itemList: [555],
-  servingsMap: new Map([[555, 1]]),
+  items: new Set([555]),
+  servings: new Map([[555, 1]]),
 }
 
 describe("cart reducer", () => {
@@ -34,7 +32,7 @@ describe("cart reducer", () => {
     expect(
       cart(afterAdd, {type: types.CHANGE_SERVINGS, id: 555, payload: 7})
     ).toEqual(
-      { ...afterAdd, servingsMap: new Map([[555, 7]]) }
+      { ...afterAdd, servings: new Map([[555, 7]]) }
     );
   });
 });

@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 
 export default function CartItem(props) {
   const food = useSelector((state) => state.foods.cache[props.id]);
-  const servings = useSelector((state) => state.cart.servingsMap.get(props.id));
+  const servings = useSelector((state) => state.cart.servings.get(props.id));
   const dispatch = useDispatch();
   
   return (

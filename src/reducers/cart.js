@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { ADD_TO_CART, REMOVE_FROM_CART, CHANGE_SERVINGS } from "../actions/types";
 
-const itemSet = function(state = new Set(), action) {
+const items = function(state = new Set(), action) {
   switch(action.type) {
     case ADD_TO_CART:
       let addState = new Set(state);
@@ -16,18 +16,7 @@ const itemSet = function(state = new Set(), action) {
   }
 };
 
-const itemList = function(state = [], action) {
-  switch(action.type) {
-    case ADD_TO_CART:
-      return [...state, action.payload];
-    case REMOVE_FROM_CART:
-      return state.filter(id => id !== action.payload);
-    default: 
-      return state;
-  }
-};
-
-const servingsMap = function(state = new Map(), action) {
+const servings = function(state = new Map(), action) {
   switch(action.type) {
     case ADD_TO_CART:
       let copy = new Map(state);
@@ -47,9 +36,8 @@ const servingsMap = function(state = new Map(), action) {
 }
 
 const cart = combineReducers({
-    itemSet,
-    itemList,
-    servingsMap,
+    items,
+    servings,
 });
 
 export default cart;

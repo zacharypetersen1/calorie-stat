@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 
 export default function CartSection() {
-  const itemList = useSelector((state) => state.cart.itemList);
+  const items = useSelector((state) => state.cart.items);
 
   return (
     <div className="cart-section">
@@ -18,7 +18,7 @@ export default function CartSection() {
         </div>
       </div>
       <SimpleBar autoHide={false} className="section-scroll cart">
-        {itemList.map(id => <CartItem key={id} id={id} />)}
+        {[...items].map(id => <CartItem key={id} id={id} />)}
       </SimpleBar>
     </div>
   )

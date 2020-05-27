@@ -6,7 +6,7 @@ import classNames from "classnames";
 export default function SearchResult(props) {
   const dispatch = useDispatch();
   const food = useSelector((state) => state.foods.cache[props.id]);
-  const isInCart = useSelector((state) => state.cart.itemSet.has(props.id));
+  const isInCart = useSelector((state) => state.cart.items.has(props.id));
 
   return (
     <div
