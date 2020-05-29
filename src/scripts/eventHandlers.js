@@ -1,28 +1,17 @@
 import { getFoodsAsync } from "./async";
-import { cacheSearchResults, loadCachedResults, changeServings } from "../actions/actions";
+import { /*cacheSearchResults, loadCachedResults,*/ changeServings } from "../actions/actions";
 import store from "../reducers/store";
 
 export function handleSearch() {
-  const search = store.getState().search;
 
-  if (search.query !== search.lastQuery && search.query !== "") {
-    if(search.resultCache.hasOwnProperty(search.query)) {
-      store.dispatch(loadCachedResults(search.query));
-    }
-    else {
-      getFoodsAsync(search.query).then((data) => {
-        store.dispatch(cacheSearchResults(data.foods, search.query, data.totalHits));
-      });
-    }
-  }
 }
 
 export function handleLoadMore() {
-  const search = store.getState().search;
+  /*const search = store.getState().search;
   const pageNumber = (search.resultCache[search.lastQuery].length / 50) + 1;
   getFoodsAsync(search.lastQuery, pageNumber).then((data) => {
     store.dispatch(cacheSearchResults(data.foods, search.lastQuery, data.totalHits));
-  });
+  });*/
 }
 
 export function handleServingsFormChange(id, str, target) {

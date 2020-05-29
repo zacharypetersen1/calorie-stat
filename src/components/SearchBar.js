@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
-import { setSearchQuery } from "../actions/actions";
-import { handleSearch } from "../scripts/eventHandlers";
+import { setSearchQuery, search } from "../actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -20,7 +19,7 @@ export default function SearchBar() {
           value={query}
           onChange={(e) => dispatch(setSearchQuery(e.target.value))}
           onKeyUp={(e) => {
-            if (e.keyCode === 13) handleSearch();
+            if (e.keyCode === 13) dispatch(search(query));
           }}
           placeholder="Apple, Oreo, Chicken..."
           aria-label="Apple, Oreo, Chicken..."
@@ -29,7 +28,7 @@ export default function SearchBar() {
         <InputGroup.Append>
           <Button 
             variant="outline-secondary" 
-            onClick={() => handleSearch()}
+            onClick={() => dispatch(search(query))}
             className="search-bar"
             tabIndex="2"
           >

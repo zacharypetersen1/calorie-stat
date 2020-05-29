@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import { CACHE_SEARCH_RESULTS, SET_SEARCH_QUERY, LOAD_CACHED_RESULTS } from "../actions/types";
+import * as types from "../actions/types";
 
 const resultCache = function (state = {}, action) {
   switch (action.type) {
-    case CACHE_SEARCH_RESULTS:
+    case types.CACHE_SEARCH_RESULTS:
       const foodIds = action.payload.map((obj) => obj.fdcId);
       let newState = {...state};
       if(!newState.hasOwnProperty(action.query)){
@@ -18,7 +18,7 @@ const resultCache = function (state = {}, action) {
 
 const totalHits = function (state = {}, action) {
   switch (action.type) {
-    case CACHE_SEARCH_RESULTS:
+    case types.CACHE_SEARCH_RESULTS:
       let newState = {...state};
       newState[action.query] = action.totalHits;
       return newState;
@@ -29,7 +29,7 @@ const totalHits = function (state = {}, action) {
 
 const query = function (state = "", action) {
   switch (action.type) {
-    case SET_SEARCH_QUERY:
+    case types.SET_SEARCH_QUERY:
       return action.payload;
     default:
       return state;
@@ -38,9 +38,7 @@ const query = function (state = "", action) {
 
 const lastQuery = function (state = "", action) {
   switch (action.type) {
-    case CACHE_SEARCH_RESULTS:
-      return action.query;
-    case LOAD_CACHED_RESULTS:
+    case types.SET_LAST_QUERY:
       return action.query;
     default:
       return state;

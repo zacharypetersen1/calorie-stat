@@ -12,7 +12,7 @@ const afterCacheResults = {
   resultCache: {"apple": [151, 2412, 651]},
   totalHits: { "apple": 3 },
   query: "",
-  lastQuery: "apple",
+  lastQuery: "",
 }
 
 describe("search reducers", () => {
@@ -40,9 +40,9 @@ describe("search reducers", () => {
     );
   });
 
-  it("should handle LOAD_CACHED_RESULTS", () => {
+  it("should handle SET_LAST_QUERY", () => {
     expect(
-      search(initial, { type: types.LOAD_CACHED_RESULTS, query: "banana" })
+      search(initial, { type: types.SET_LAST_QUERY, query: "banana" })
     ).toEqual(
       { ...initial, lastQuery: "banana" }
     )
