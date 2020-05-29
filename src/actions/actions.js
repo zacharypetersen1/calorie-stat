@@ -26,7 +26,7 @@ export function removeFromCart(id) {
   return { type: types.REMOVE_FROM_CART, payload: id };
 }
 
-export function changeServings(id, amount) {
+function changeServings(id, amount) {
   return { type: types.CHANGE_SERVINGS, id: id, payload: amount };
 }
 
