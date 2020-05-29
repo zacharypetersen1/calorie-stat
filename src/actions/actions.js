@@ -47,6 +47,7 @@ export function fetchSearchResults(query, pageNumber) {
   return (dispatch) => {
     const body = {
       query,
+      pageSize: 20,
       pageNumber,
     };
 
@@ -58,5 +59,26 @@ export function fetchSearchResults(query, pageNumber) {
       body: JSON.stringify(body),
     }).then((response) => response.json())
     .then((data) => dispatch(cacheSearchResults(data.foods, query, data.totalHits)));
+  }
+}
+
+export function servingsFormChange(id, str, target) {
+  return (dispatch) => {
+    if(str.match(/^\d{0,2}$/)) {
+      const newServings = str === "" ? 0 : parseInt(str);
+      dispatch(changeServings(id, newServings));
+    }
+    if(str === "") {
+      setTimeout(() => target.select(), 0);
+    }
+  };
+}
+
+export function incrimentServings(id, incriment) {
+  return (dispatch, getState) => {
+    const newServings = getState().cart.servings.get(id) + incriment;
+    if(newServings >= 0 && newServings <= 99) {
+      dispatch(changeServings(id, newServings));
+    }
   }
 }

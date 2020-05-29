@@ -1,12 +1,13 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { handleLoadMore } from "../scripts/eventHandlers";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchSearchResults } from "../actions/actions";
 import Button from "react-bootstrap/Button";
 import SearchResult from "./SearchResult";
 import SimpleBar from "simplebar-react";
 import 'simplebar/dist/simplebar.min.css';
 
 export default function SearchResults() {
+  const dispatch = useDispatch();
   const lastQuery = useSelector((state) => state.search.lastQuery);
   const searchResults = useSelector((state) => state.search.resultCache[lastQuery]);
   const totalHits = useSelector((state) => state.search.totalHits[lastQuery]);
@@ -25,7 +26,7 @@ export default function SearchResults() {
           variant="outline-secondary"
           className="load-more-button"
           tabIndex="3"
-          onClick={() => handleLoadMore()}>Load More Results
+          onClick={() => dispatch(fetchSearchResults(lastQuery, searchResults.length / 20 + 1))}>Load More Results
         </Button> : null}
     </SimpleBar>
   );
