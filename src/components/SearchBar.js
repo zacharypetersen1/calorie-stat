@@ -5,11 +5,12 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import { setSearchQuery, search } from "../actions/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchBar() {
   const dispatch = useDispatch();
   const query = useSelector((state) => state.search.query);
+  const isLoading = useSelector((state) => state.search.isFetchingSearch);
 
   return (
     <div className="search-bar-container">
@@ -32,7 +33,11 @@ export default function SearchBar() {
             className="search-bar"
             tabIndex="2"
           >
-            <FontAwesomeIcon icon={faSearch} />
+            {isLoading ? 
+              <FontAwesomeIcon icon={faSpinner} spin /> :
+              <FontAwesomeIcon icon={faSearch} />
+            }
+
           </Button>
         </InputGroup.Append>
       </InputGroup>
