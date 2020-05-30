@@ -30,15 +30,23 @@ function changeServings(id, amount) {
   return { type: types.CHANGE_SERVINGS, id: id, payload: amount };
 }
 
+export function startFetchingSearch() {
+  return { type: types.START_FETCHING_SEARCH };
+}
+
 export function search(query) {
   return (dispatch, getState) => {
     const search = getState().search;
 
     if (search.query !== search.lastQuery && search.query !== "") {
-      if(!search.resultCache.hasOwnProperty(search.query)) {
+      if(search.resultCache.hasOwnProperty(search.query)) {
+        // Load cached results
+        dispatch(setLastQuery(search.query));
+      }
+      else {
+        dispatch(startFetchingSearch());
         dispatch(fetchSearchResults(query, 0));
       }
-      dispatch(setLastQuery(search.query));
     }
   };
 }

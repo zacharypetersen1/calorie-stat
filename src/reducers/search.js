@@ -40,15 +40,29 @@ const lastQuery = function (state = "", action) {
   switch (action.type) {
     case types.SET_LAST_QUERY:
       return action.query;
+    case types.CACHE_SEARCH_RESULTS:
+      return action.query;
     default:
       return state;
   }
 };
+
+const isFetchingSearch = function(state = false, action) {
+  switch (action.type) {
+    case types.START_FETCHING_SEARCH:
+      return true;
+    case types.CACHE_SEARCH_RESULTS:
+      return false;
+    default:
+      return state;
+  }
+}
 
 const search = combineReducers({
   resultCache,
   totalHits,
   query,
   lastQuery,
+  isFetchingSearch,
 });
 export default search;
