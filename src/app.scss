@@ -43,8 +43,19 @@ $remove-button-width: 30px;
 }
 
 .load-more-button {
-  display: block;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 20px auto;
+}
+
+.load-more-spinner {
+  position: absolute;
+}
+
+.hidden {
+  opacity: 0;
 }
 
 .search-result {
