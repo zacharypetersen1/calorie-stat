@@ -1,15 +1,6 @@
 import * as types from "./types";
 import fetch from "cross-fetch";
 
-function cacheSearchResults(results, query, totalHits) {
-  return {
-    type: types.CACHE_SEARCH_RESULTS,
-    payload: results,
-    query: query,
-    totalHits: totalHits,
-  };
-}
-
 export function setLastQuery(query) {
   return { type: types.SET_LAST_QUERY, query: query };
 }
@@ -30,8 +21,17 @@ function changeServings(id, amount) {
   return { type: types.CHANGE_SERVINGS, id: id, payload: amount };
 }
 
-export function startFetchingSearch() {
+function startFetchingSearch() {
   return { type: types.START_FETCHING_SEARCH };
+}
+
+function finishFetchingSearch(results, query, totalHits) {
+  return {
+    type: types.FINISH_FETCHING_SEARCH,
+    payload: results,
+    query: query,
+    totalHits: totalHits,
+  };
 }
 
 export function search(query) {
@@ -45,14 +45,51 @@ export function search(query) {
       }
       else {
         dispatch(startFetchingSearch());
-        dispatch(fetchSearchResults(query, 0));
+        const body = {
+          query,
+          pageSize: 20,
+          pageNumber: 0,
+        };
+    
+        fetch("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=C6cV4ea5SYHatxL7N2ETU2awLx10MY3vbKOKE7wS", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }).then((response) => response.json())
+        .then((data) => dispatch(finishFetchingSearch(data.foods, query, data.totalHits)));
       }
     }
   };
 }
 
-export function fetchSearchResults(query, pageNumber) {
-  return (dispatch) => {
+function startLoadMore(query) {
+  return {
+    type: types.START_LOAD_MORE,
+    query,
+  };
+}
+
+function finishLoadMore(query, results) {
+  return {
+    type: types.FINISH_LOAD_MORE,
+    query,
+    payload: results,
+  }
+}
+
+export function loadMore (query) {
+  return (dispatch, getState) => {
+
+    // Don't proceed if already loading more
+    if(getState().search.isLoadingMore.get(query)) {
+      return;
+    }
+
+    dispatch(startLoadMore(query));
+    
+    const pageNumber = (getState().search.resultCache[query].length / 20) + 1;
     const body = {
       query,
       pageSize: 20,
@@ -66,7 +103,7 @@ export function fetchSearchResults(query, pageNumber) {
       },
       body: JSON.stringify(body),
     }).then((response) => response.json())
-    .then((data) => dispatch(cacheSearchResults(data.foods, query, data.totalHits)));
+    .then((data) => dispatch(finishLoadMore(query, data.foods)));
   }
 }
 
