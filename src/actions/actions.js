@@ -45,20 +45,14 @@ export function search(query) {
       }
       else {
         dispatch(startFetchingSearch());
-        const body = {
-          query,
-          pageSize: 20,
-          pageNumber: 0,
-        };
     
-        fetch("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=C6cV4ea5SYHatxL7N2ETU2awLx10MY3vbKOKE7wS", {
+        fetch(`http://34.94.99.212:3000/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=0&max_results=20`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(body),
         }).then((response) => response.json())
-        .then((data) => dispatch(finishFetchingSearch(data.foods, query, data.totalHits)));
+        .then((data) => dispatch(finishFetchingSearch(data.foods.food, query, data.foods.total_results)));
       }
     }
   };
@@ -90,20 +84,14 @@ export function loadMore (query) {
     dispatch(startLoadMore(query));
     
     const pageNumber = (getState().search.resultCache[query].length / 20) + 1;
-    const body = {
-      query,
-      pageSize: 20,
-      pageNumber,
-    };
 
-    fetch("https://api.nal.usda.gov/fdc/v1/foods/search?api_key=C6cV4ea5SYHatxL7N2ETU2awLx10MY3vbKOKE7wS", {
+    fetch(`http://34.94.99.212:3000/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=${pageNumber}&max_results=20`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
     }).then((response) => response.json())
-    .then((data) => dispatch(finishLoadMore(query, data.foods)));
+    .then((data) => dispatch(finishLoadMore(query, data.foods.food)));
   }
 }
 

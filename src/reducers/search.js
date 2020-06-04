@@ -5,11 +5,11 @@ const resultCache = function (state = {}, action) {
   switch (action.type) {
     case types.FINISH_FETCHING_SEARCH:
       let newState = {...state};
-      newState[action.query] = action.payload.map((obj) => obj.fdcId);
+      newState[action.query] = action.payload.map((obj) => obj.food_id);
       return newState;
     case types.FINISH_LOAD_MORE:
       let newState2 = {...state};
-      const newIds = action.payload.map((obj) => obj.fdcId);
+      const newIds = action.payload.map((obj) => obj.food_id);
       newState2[action.query] = [...newState2[action.query], ...newIds];
       return newState2;
     default:
