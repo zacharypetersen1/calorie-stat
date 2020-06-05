@@ -22,9 +22,11 @@ $remove-button-width: 30px;
 }
 
 .outcome-section {
-  background-color: yellow;
   width: 50%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-bar-container {
@@ -228,4 +230,10 @@ $remove-button-width: 30px;
   .servings-button {
     opacity: 100%;
   }
+}
+
+.graph-container {
+  width: 200px;
+  background-color: blue;
+  height: 90%;
 }
