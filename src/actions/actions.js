@@ -46,7 +46,7 @@ export function search(query) {
       else {
         dispatch(startFetchingSearch());
     
-        fetch(`http://34.94.99.212:3000/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=0&max_results=20`, {
+        fetch(`http://localhost:3030/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=0&max_results=20`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export function loadMore (query) {
     
     const pageNumber = (getState().search.resultCache[query].length / 20) + 1;
 
-    fetch(`http://34.94.99.212:3000/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=${pageNumber}&max_results=20`, {
+    fetch(`http://localhost:3030/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=${pageNumber}&max_results=20`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
