@@ -16,7 +16,14 @@ const cache = function (state = {}, action) {
   }
 }
 
+const nutrition = function (state = new Map(), action) {
+  switch(action.type) { 
+    default: return state;
+  }
+}
+
 const foods = combineReducers({
   cache,
+  nutrition,
 });
 export default foods;

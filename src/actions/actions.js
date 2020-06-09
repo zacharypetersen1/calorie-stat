@@ -25,6 +25,18 @@ function startFetchingSearch() {
   return { type: types.START_FETCHING_SEARCH };
 }
 
+function startLoadNutrition(id) {
+  return { type: types.START_LOAD_NUTRITION, id };
+}
+
+function successLoadNutrition(id, payload) {
+  return { type: types.SUCESS_LOAD_NUTRITION, id, payload };
+}
+
+function failLoadNutrition(id) {
+  return { type: types.FAIL_LOAD_NUTRITION, id };
+}
+
 function finishFetchingSearch(results, query, totalHits) {
   return {
     type: types.FINISH_FETCHING_SEARCH,
@@ -48,9 +60,6 @@ export function search(query) {
     
         fetch(`http://localhost:3030/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=0&max_results=20`, {
           method: "post",
-          headers: {
-            "Content-Type": "application/json",
-          },
         }).then((response) => response.json())
         .then((data) => dispatch(finishFetchingSearch(data.foods.food, query, data.foods.total_results)));
       }
@@ -87,9 +96,6 @@ export function loadMore (query) {
 
     fetch(`http://localhost:3030/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=${pageNumber}&max_results=20`, {
       method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
     }).then((response) => response.json())
     .then((data) => dispatch(finishLoadMore(query, data.foods.food)));
   }
@@ -112,6 +118,18 @@ export function incrimentServings(id, incriment) {
     const newServings = getState().cart.servings.get(id) + incriment;
     if(newServings >= 0 && newServings <= 99) {
       dispatch(changeServings(id, newServings));
+    }
+  }
+}
+
+export function loadNutrition(id) {
+  return (dispatch, getState) => {
+    if(!getState().foods.loadNutrition.has(id)) {
+      dispatch(startLoadNutrition(id));
+      fetch(`http://localhost:3030/fatsecret?method=food.get.v2&food_id=${id}&format=json`, {
+        method: "post",
+      }).then((response) => response.json())
+      .then((data) => dispatch(successLoadNutrition(id, data)));
     }
   }
 }
