@@ -24,7 +24,7 @@ const nutrition = function (state = new Map(), action) {
       return state1;
     case types.SUCESS_LOAD_NUTRITION:
       let state2 = new Map(state);
-      state2.set(action.id, { ...action.payload.food.serving, isLoaded: true, success: true });
+      state2.set(action.id, { ...action.payload, isLoaded: true, success: true });
       return state2;
     default: return state;
   }

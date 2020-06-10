@@ -135,7 +135,11 @@ export function loadNutrition(id) {
       fetch(`http://localhost:3030/fatsecret?method=food.get.v2&food_id=${id}&format=json`, {
         method: "post",
       }).then((response) => response.json())
-      .then((data) => dispatch(successLoadNutrition(id, data)));
+      .then((data) =>
+        dispatch(successLoadNutrition(id, 
+          Array.isArray(data.food.servings.serving) ? data.food.servings.serving[0] : data.food.servings.serving
+        ))
+      );
     }
   }
 }
