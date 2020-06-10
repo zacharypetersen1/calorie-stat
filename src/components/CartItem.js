@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 export default function CartItem(props) {
   const food = useSelector((state) => state.foods.cache[props.id]);
   const servings = useSelector((state) => state.cart.servings.get(props.id));
+  const hasLoadedNutrition = useSelector((state) => state.foods.nutrition.get(props.id).isLoaded);
   const dispatch = useDispatch();
   
   return (
@@ -19,27 +20,30 @@ export default function CartItem(props) {
       <div className="cart-item-text">
         {food.description}
       </div>
-      <div className="cart-item-servings">
-        <Button
-          className="servings-button"
-          onClick={ () => dispatch(incrimentServings(props.id, -1)) }
-        >
-          <FontAwesomeIcon icon={ faMinus } />
-        </Button>
-        <FormControl 
-          className="servings-form"
-          value={ servings }
-          tabIndex="4"
-          onClick={ (e) => e.target.select() }
-          onChange={ (e) => dispatch(servingsFormChange(props.id, e.target.value, e.target))}
-        />
-        <Button
-          className="servings-button"
-          onClick={ () => dispatch(incrimentServings(props.id, 1)) }
-        >
-          <FontAwesomeIcon icon={ faPlus } />
-        </Button>
-      </div>
+      { hasLoadedNutrition ?
+        <div className="cart-item-servings">
+          <Button
+            className="servings-button"
+            onClick={ () => dispatch(incrimentServings(props.id, -1)) }
+          >
+            <FontAwesomeIcon icon={ faMinus } />
+          </Button>
+          <FormControl 
+            className="servings-form"
+            value={ servings }
+            tabIndex="4"
+            onClick={ (e) => e.target.select() }
+            onChange={ (e) => dispatch(servingsFormChange(props.id, e.target.value, e.target))}
+          />
+          <Button
+            className="servings-button"
+            onClick={ () => dispatch(incrimentServings(props.id, 1)) }
+          >
+            <FontAwesomeIcon icon={ faPlus } />
+          </Button>
+        </div>
+        : <span>Loading</span>
+      }
     </div>
   )
 }

@@ -61,7 +61,10 @@ export function search(query) {
         fetch(`http://localhost:3030/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=0&max_results=20`, {
           method: "post",
         }).then((response) => response.json())
-        .then((data) => dispatch(finishFetchingSearch(data.foods.food, query, data.foods.total_results)));
+        .then((data) => {
+          dispatch(finishFetchingSearch(data.foods.food, query, data.foods.total_results));
+          data.foods.food.forEach((element) => dispatch(loadNutrition(element.food_id)));
+        });
       }
     }
   };
@@ -97,7 +100,10 @@ export function loadMore (query) {
     fetch(`http://localhost:3030/fatsecret?method=foods.search&search_expression=${query}&format=json&page_number=${pageNumber}&max_results=20`, {
       method: "post",
     }).then((response) => response.json())
-    .then((data) => dispatch(finishLoadMore(query, data.foods.food)));
+    .then((data) => {
+      dispatch(finishLoadMore(query, data.foods.food))
+      data.foods.food.forEach((element) => dispatch(loadNutrition(element.food_id)));
+    });
   }
 }
 
@@ -124,7 +130,7 @@ export function incrimentServings(id, incriment) {
 
 export function loadNutrition(id) {
   return (dispatch, getState) => {
-    if(!getState().foods.loadNutrition.has(id)) {
+    if(!getState().foods.nutrition.has(id)) {
       dispatch(startLoadNutrition(id));
       fetch(`http://localhost:3030/fatsecret?method=food.get.v2&food_id=${id}&format=json`, {
         method: "post",

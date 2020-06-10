@@ -18,6 +18,14 @@ const cache = function (state = {}, action) {
 
 const nutrition = function (state = new Map(), action) {
   switch(action.type) { 
+    case types.START_LOAD_NUTRITION:
+      let state1 = new Map(state);
+      state1.set(action.id, {isLoaded: false});
+      return state1;
+    case types.SUCESS_LOAD_NUTRITION:
+      let state2 = new Map(state);
+      state2.set(action.id, { ...action.payload.food.serving, isLoaded: true, success: true });
+      return state2;
     default: return state;
   }
 }
