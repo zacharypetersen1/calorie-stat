@@ -237,3 +237,10 @@ $remove-button-width: 30px;
   border: solid 1px #{darken($primary, 50%)};
   height: 90%;
 }
+
+.graph-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
