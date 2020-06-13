@@ -46,6 +46,10 @@ function finishFetchingSearch(results, query, totalHits) {
   };
 }
 
+function assignHue(id, hue) {
+  return { type: types.ASSIGN_HUE, id, hue };
+}
+
 export function search(query) {
   return (dispatch, getState) => {
     const search = getState().search;
@@ -125,6 +129,15 @@ export function incrimentServings(id, incriment) {
     if(newServings >= 0 && newServings <= 99) {
       dispatch(changeServings(id, newServings));
     }
+  }
+}
+
+export function doAddToCart(id) {
+  return (dispatch, getState) => {
+    if(!getState().foods.hues.has(id)) {
+      dispatch(assignHue(id, getState().foods.currentHue));
+    }
+    dispatch(addToCart(id));
   }
 }
 

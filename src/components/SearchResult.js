@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeFromCart } from "../actions/actions";
+import { addToCart, removeFromCart, doAddToCart } from "../actions/actions";
 import classNames from "classnames";
 
 export default function SearchResult(props) {
@@ -11,7 +11,7 @@ export default function SearchResult(props) {
   return (
     <div
       onClick={ 
-        ()=>dispatch(isInCart ? removeFromCart(props.id) : addToCart(props.id))
+        ()=>dispatch(isInCart ? removeFromCart(props.id) : doAddToCart(props.id))
       }
       className={classNames("search-result", {"checked": isInCart})}
     >

@@ -29,8 +29,30 @@ const nutrition = function (state = new Map(), action) {
   }
 }
 
+const hues = function (state = new Map(), action) {
+  switch(action.type) {
+    case types.ASSIGN_HUE:
+      let newState = new Map(state);
+      newState.set(action.id, action.hue);
+      return newState;
+    default:
+      return state;
+  }
+}
+
+const currentHue = function (state = 0, action) {
+  switch(action.type) {
+    case types.ASSIGN_HUE:
+      return (state + 85) % 360;
+    default:
+      return state;
+  }
+}
+
 const foods = combineReducers({
   cache,
   nutrition,
+  hues,
+  currentHue,
 });
 export default foods;
