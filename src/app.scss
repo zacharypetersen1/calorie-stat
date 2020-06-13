@@ -234,6 +234,6 @@ $remove-button-width: 30px;
 
 .graph-container {
   width: 200px;
-  background-color: blue;
+  border: solid 1px #{darken($primary, 50%)};
   height: 90%;
 }
