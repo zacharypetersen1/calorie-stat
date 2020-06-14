@@ -10,10 +10,11 @@ export default function CartItem(props) {
   const food = useSelector((state) => state.foods.cache[props.id]);
   const servings = useSelector((state) => state.cart.servings.get(props.id));
   const hasLoadedNutrition = useSelector((state) => state.foods.nutrition.get(props.id).isLoaded);
+  const hues = useSelector((state) => state.foods.hues);
   const dispatch = useDispatch();
   
   return (
-    <div className="cart-item">
+    <div className="cart-item" style={ {"background-color": `hsl(${hues.get(props.id)}, 50%, 60%`} }>
       <div className="cart-item-remove" onClick={ () => dispatch(removeFromCart(props.id)) }>
         <FontAwesomeIcon icon={ faTimes } />
       </div>

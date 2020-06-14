@@ -180,7 +180,6 @@ body{
 .cart-item {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid darken($primary, 30%);
 
   &-remove {
     display:flex;
