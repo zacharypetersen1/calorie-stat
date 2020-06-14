@@ -89,6 +89,13 @@ function finishLoadMore(query, results) {
   }
 }
 
+export function setDisplayMode(mode) {
+  return {
+    types: types.SET_DISPLAY_MODE,
+    mode,
+  };
+}
+
 export function loadMore (query) {
   return (dispatch, getState) => {
 
