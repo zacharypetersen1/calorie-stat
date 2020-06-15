@@ -9,8 +9,8 @@ export default function DisplayModeButton(props) {
 
   return (
     <Button 
-      variant={ curMode === props.mode ? "primary" : "secondary" }
-      onClick={ (e) => dispatch(setDisplayMode(props.mode)) }
-    >{props.mode}</Button>
+      variant={ curMode === props.nutrient ? "primary" : "secondary" }
+      onClick={ (e) => dispatch(setDisplayMode(props.nutrient)) }
+    >{props.name}</Button>
   );
 }

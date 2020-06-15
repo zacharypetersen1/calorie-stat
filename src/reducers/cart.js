@@ -35,7 +35,7 @@ const servings = function(state = new Map(), action) {
   }
 }
 
-const mode = function(state = "Edit", action) {
+const mode = function(state = "edit", action) {
   switch(action.type) {
     case types.SET_DISPLAY_MODE:
       return action.mode;
