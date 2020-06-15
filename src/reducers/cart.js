@@ -35,7 +35,7 @@ const servings = function(state = new Map(), action) {
   }
 }
 
-const mode = function(state = "none", action) {
+const mode = function(state = "Edit", action) {
   switch(action.type) {
     case types.SET_DISPLAY_MODE:
       return action.mode;
@@ -47,6 +47,7 @@ const mode = function(state = "none", action) {
 const cart = combineReducers({
     items,
     servings,
+    mode,
 });
 
 export default cart;
